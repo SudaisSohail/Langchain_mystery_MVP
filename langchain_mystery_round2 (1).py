@@ -5,6 +5,9 @@ import os
 import json
 import textwrap
 from datetime import datetime
+from dotenv import load_dotenv
+
+laod_dotenv()
 
 OBSIDIAN_DOSSIER_TEXT = textwrap.dedent("""
 # PROJECT OBSIDIAN INTERNAL DOSSIER: STATUS REVIEW (2025-11-25)
@@ -113,8 +116,6 @@ def initialize_groq_llm(model="llama-3.3-70b-versatile", temperature=0.2):
     if not os.getenv("GROQ_API_KEY"):
         raise ValueError(
             "GROQ_API_KEY not found!\n"
-            "Get your free API key at: https://console.groq.com\n"
-            "Then set it: export GROQ_API_KEY='your-key-here'"
         )
     
     return ChatGroq(
